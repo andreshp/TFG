@@ -21,4 +21,7 @@
 *.mtc1
 *.out
 *.synctex.gz
+.nav
+.vrb
+.snm
 _minted*
