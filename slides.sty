@@ -1,0 +1,422 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Package which include a template for writing a report in latex.
+%
+% Autor: Andrés Herrera Poyatos (https://github.com/andreshp)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% You can put this package in the directory ~/texmf/tex/latex/ and use it with \usepackage{template}
+% whenever you want.
+%
+% The template does not provide a title environment. You have to use one of the titlex.sty packages
+% in order to define a title environment.
+% Furthermore, the template requires you to define the following variables:
+
+% Title of the document.
+%\newcommand{\doctitle}{This is the title}
+% Subtitle.
+%\newcommand{\docsubtitle}{A cool subtitle}
+% Date.
+%\newcommand{\docdate}{March 17th, 2017}
+% Subject.
+%\newcommand{\subject}{LaTeX}
+% Author.
+%\newcommand{\docauthor}{Andrés Herrera Poyatos}
+%\newcommand{\docaddress}{University of Granada}
+%\newcommand{\docemail}{andreshp9@gmail.com}
+% Document's abstract. If you leave it empty, then it won't be used.
+%\newcommand{\docabstract}{}
+
+\ProvidesPackage{slides}[2018]
+
+%-----------------------------------------------------------------------------------------------------
+%	COLOURS
+%-----------------------------------------------------------------------------------------------------
+
+\definecolor{ChetwodeBlue}{HTML}{6b77ad} % Titles
+\definecolor{Jaguar}{HTML}{262731}       % Background
+\definecolor{TurkishRose}{HTML}{B46275}  % Comments
+\definecolor{Grandis}{HTML}{F5CF73}      % Details
+
+%-----------------------------------------------------------------------------------------------------
+%	COLOURS
+%-----------------------------------------------------------------------------------------------------
+
+\definecolor{DarkBlue}{HTML}{2c386d} % Main Title
+\definecolor{ChetwodeBlue}{HTML}{6b77ad} % Titles
+\definecolor{Jaguar}{HTML}{262731}       % Background
+\definecolor{TurkishRose}{HTML}{B46275}  % Comments
+\definecolor{Grandis}{HTML}{F5CF73}      % Details
+
+\definecolor{backg}{HTML}{F2F2F2}    % Fondo
+%\definecolor{title}{HTML}{bdc3d1}    % Títulos
+\definecolor{title}{HTML}{dce1ed}    % Títulos
+\definecolor{comments}{HTML}{BDBDBD} % Comentarios
+\definecolor{keywords}{HTML}{08388c} % Palabras clave
+\definecolor{strings}{HTML}{FA5858}  % Strings
+\definecolor{links}{HTML}{2C2C95}    % Enlaces
+\definecolor{bars}{HTML}{045FB4}     % Barras (gráfico)
+
+\usepackage{tcolorbox}
+
+
+%----------------------------------------------------------------------------------------
+%	THEME
+%----------------------------------------------------------------------------------------
+
+% Theme and colour theme
+\usetheme{Dresden}
+%\usecolortheme{orchid}
+\usecolortheme{dolphin}
+%\usecolortheme{seahorse}
+
+\useinnertheme{circles}
+\setbeamercovered{transparent}
+
+% Title
+\setbeamercolor{title}{fg=DarkBlue}
+% Frame title
+\setbeamercolor{frametitle}{fg=ChetwodeBlue}
+% Structure
+\setbeamercolor{structure}{fg=Jaguar}
+
+% Enlaces (tex.stackexchange.com/questions/13423)
+\hypersetup{colorlinks,linkcolor=,urlcolor=TurkishRose}
+
+% Remove navigation links (stackoverflow.com/questions/3017030)
+\setbeamertemplate{navigation symbols}{}
+
+% Remove footline  (stackoverflow.com/questions/1435837)
+\setbeamertemplate{footline}{}
+
+% Avoid warning boxes
+\hfuzz=20pt
+\vfuzz=20pt
+
+%-----------------------------------------------------------------------------------------------------
+%	FONT SELECTION
+%-----------------------------------------------------------------------------------------------------
+
+% Choose one of these fonts
+%\usepackage{courier}
+%\usepackage[bitstream-charter]{mathdesign}
+
+% Improves the font rendering.
+% https://tex.stackexchange.com/questions/82001/microtype-settings-for-dummies
+\usepackage[final]{microtype}
+
+% Frame title
+\setbeamerfont{frametitle}{series=\bfseries, size=\large}
+
+% Blocks Font size
+% https://tex.stackexchange.com/questions/96275/how-to-change-example-block-body-text-size-in-beamer
+\setbeamerfont{block body}{size=\normalsize}
+\setbeamerfont{block body alerted}{size=\normalsize}
+\setbeamerfont{block body exampled}{size=\normalsize}
+\setbeamerfont{block title}{size=\normalsize, series=\bfseries}
+\setbeamerfont{block title alerted}{size=\large, series=\bfseries}
+\setbeamerfont{block title exampled}{size=\large, series=\bfseries}
+
+%----------------------------------------------------------------------------------------
+%   BLOCKS
+%----------------------------------------------------------------------------------------
+
+\usepackage{tcolorbox}
+
+% Blocks colour
+\setbeamercolor{block title}{bg=title, fg=ChetwodeBlue}
+\setbeamercolor{block body}{bg=ChetwodeBlue!10,fg=black}
+
+\setbeamercolor{block title alerted}{fg=TurkishRose, bg=title!92!red}
+\setbeamercolor{block body alerted}{fg=black, bg=ChetwodeBlue!10}
+
+\setbeamercolor{block title example}{fg=green!70!black, bg=title!92!green}
+\setbeamercolor{block body example}{fg=ChetwodeBlue!10, bg=backg}
+
+%-----------------------------------------------------------------------------------------------------
+%	ITEMIZES / ENUMERATES
+%-----------------------------------------------------------------------------------------------------
+
+\setbeamertemplate{itemize item}{\color{TurkishRose}$\bullet$}
+\setbeamertemplate{itemize subitem}{\color{ChetwodeBlue}$\circ$}
+\setbeamercolor{section number projected}{bg=TurkishRose}
+
+% Auxiliar color for itemize
+\newcommand*\MyPitem{\item[\color{ChetwodeBlue}{\textbullet}]}
+
+% Color for alerted text in itemize / enumerate
+% https://tex.stackexchange.com/questions/96864/changing-the-color-of-alert-command-in-beamer
+\setbeamercolor{alerted text}{fg=TurkishRose}
+
+% Avoid warnings in itemize
+\renewcommand\textbullet{\ensuremath{\bullet}}
+
+%-----------------------------------------------------------------------------------------------------
+%	IMAGES
+%-----------------------------------------------------------------------------------------------------
+
+% Allows the H placement in images.
+\usepackage{float}
+
+%-----------------------------------------------------------------------------------------------------
+%	HYPERREF SET UP
+%-----------------------------------------------------------------------------------------------------
+
+\PassOptionsToPackage{unicode}{hyperref}      % Avoid mistakes with non-ASCII characters.
+\PassOptionsToPackage{naturalnames}{hyperref} % tex.stackexchange.com/questions/10555
+
+\usepackage{hyperref}
+
+%\hypersetup{
+%	colorlinks   = true,   % Quita las cajas y añade un color al texto.
+%	% Tipos de enlaces cuyo color se puede configurar:
+%	linkcolor    = black,        % Por defecto red
+%	anchorcolor  = gray,        % Por defecto black
+%	citecolor    = magenta,     % Por defecto green
+%	filecolor    = red,         % Por defecto cyan
+%	menucolor    = green,       % Por defecto red
+%	runcolor     = red,         % Por defecto cyan
+%	urlcolor     = magenta,        % Por defecto magenta
+%}
+
+%-----------------------------------------------------------------------------------------------------
+%	COMMANDS
+%-----------------------------------------------------------------------------------------------------
+
+% New commands
+\newcommand{\importsection}[1]{\input{./Sections/#1}}        % Include sections from sections directory.
+\newcommand{\link}[3]{\href{#1}{\textbf{#2}} - {\small #3}}  % Unique style for references
+
+% Background block
+\makeatletter	
+\newbox\@backgroundblock
+\newenvironment{backgroundblock}[2]{%
+	\global\setbox\@backgroundblock=\vbox\bgroup%
+	\unvbox\@backgroundblock%
+	\vbox to0pt\bgroup\vskip#2\hbox to0pt\bgroup\hskip#1\relax%
+}{\egroup\egroup\egroup}
+\addtobeamertemplate{background}{\box\@backgroundblock}{}
+
+% Two part definitions
+\newcommand{\twopartdef}[2]
+{
+	\left\{
+	\begin{array}{ll}
+		#1 \\
+		#2
+	\end{array}
+	\right.
+}
+
+%-----------------------------------------------------------------------------------------------------
+%	TITLE PAGE
+%-----------------------------------------------------------------------------------------------------
+
+\usepackage[framemethod=tikz]{mdframed}
+
+\newmdenv[tikzsetting={draw=Jaguar,fill=white,fill opacity=0.7, line width=2pt}, backgroundcolor=none,leftmargin=40,rightmargin=40,innertopmargin=4pt, roundcorner=15pt] {titleBox}
+
+% Define the title page.
+\defbeamertemplate*{title page}{customized}[1][] {	
+\vspace{0.1\paperheight}
+\begin{flushleft}
+	\begin{titleBox}
+		\begin{beamercolorbox}[sep=8pt,center]{title}	
+                  {\usebeamerfont{title}\textbf{\doctitle}} \\[3mm]                  
+                  {\color{TurkishRose} \large \textbf{\docsubtitle}}
+		\end{beamercolorbox}
+		
+		\begin{beamercolorbox}[sep=8pt,center]{author}	
+                  \usebeamerfont{author}\large\textbf{\docauthor}
+		\end{beamercolorbox}
+		\begin{beamercolorbox}[sep=8pt,center]{author}	
+                  \textbf{ Tutor: Pedro A. García Sánchez}
+		\end{beamercolorbox}
+	\end{titleBox}
+\end{flushleft}
+}
+
+%-----------------------------------------------------------------------------------------------------
+%	INFORMATION
+%-----------------------------------------------------------------------------------------------------
+
+% Obtain the slides information from \docX command.
+\title{\doctitle}
+\author{\docauthor}
+
+%----------------------------------------------------------------------------------------
+%   MATEMÁTICAS
+%----------------------------------------------------------------------------------------
+
+% Paquetes para matemáticas:                     
+\usepackage{amsmath, amsthm, amscd} % Teoremas, fuentes y símbolos.
+
+\renewenvironment<>{theorem}[1][\undefined]{
+	\begin{actionenv}#2
+		\ifx#1\undefined
+		\def\insertblocktitle{Teorema}%
+		\else
+		\def\insertblocktitle{Teorema ({\em#1})}%
+		\fi
+		\par
+		\mode<presentation>{%
+			\setbeamercolor{block title}{fg=white,bg=Jaguar!80!ChetwodeBlue}
+			\setbeamercolor{block body}{fg=black,bg=ChetwodeBlue!10}
+		}%
+		\usebeamertemplate{block begin}\em}
+	{\par\usebeamertemplate{block end}\end{actionenv}}
+
+\renewenvironment<>{lemma}[1][\undefined]{
+	\begin{actionenv}#2
+		\ifx#1\undefined
+		\def\insertblocktitle{Lema}%
+		\else
+		\def\insertblocktitle{Lema ({\em#1})}%
+		\fi
+		\par
+		\mode<presentation>{%
+			\setbeamercolor{block title}{fg=white,bg=Jaguar!80!ChetwodeBlue}
+			\setbeamercolor{block body}{fg=black,bg=ChetwodeBlue!10}
+		}%
+		\usebeamertemplate{block begin}\em}
+	{\par\usebeamertemplate{block end}\end{actionenv}}
+
+\newenvironment<>{proposition}[1][\undefined]{
+	\begin{actionenv}#2
+		\ifx#1\undefined
+		\def\insertblocktitle{Proposición}%
+		\else
+		\def\insertblocktitle{Proposición ({\em#1})}%
+		\fi
+		\par
+		\mode<presentation>{%
+			\setbeamercolor{block title}{fg=white,bg=Jaguar!80}
+			\setbeamercolor{block body}{fg=black,bg=ChetwodeBlue!10}
+		}%
+		\usebeamertemplate{block begin}\em}
+	{\par\usebeamertemplate{block end}\end{actionenv}}
+
+\newenvironment<>{corollary}[1][\undefined]{
+	\begin{actionenv}#2
+		\ifx#1\undefined
+		\def\insertblocktitle{Corolario}%
+		\else
+		\def\insertblocktitle{Corolario ({\em#1})}%
+		\fi
+		\par
+		\mode<presentation>{%
+			\setbeamercolor{block title}{fg=white,bg=Jaguar!80}
+			\setbeamercolor{block body}{fg=black,bg=ChetwodeBlue!10}
+		}%
+		\usebeamertemplate{block begin}\em}
+	{\par\usebeamertemplate{block end}\end{actionenv}}
+
+\newenvironment<>{conjecture}[1][\undefined]{
+	\begin{actionenv}#2
+		\ifx#1\undefined
+		\def\insertblocktitle{Conjetura}%
+		\else
+		\def\insertblocktitle{Conjetura ({\em#1})}%
+		\fi
+		\par
+		\mode<presentation>{%
+			\setbeamercolor{block title}{fg=white,bg=Jaguar!80}
+			\setbeamercolor{block body}{fg=black,bg=ChetwodeBlue!10}
+		}%
+		\usebeamertemplate{block begin}\em}
+	{\par\usebeamertemplate{block end}\end{actionenv}}
+
+      \renewenvironment<>{definition}[1][\undefined]{
+	\begin{actionenv}#2
+		\ifx#1\undefined
+		\def\insertblocktitle{Definición}%
+		\else
+		\def\insertblocktitle{Definición ({\em#1})}%
+		\fi
+		\par
+		\mode<presentation>{%
+            \setbeamercolor{block title}{bg=title, fg=ChetwodeBlue}
+            \setbeamercolor{block body}{bg=ChetwodeBlue!10,fg=black}
+		}%
+		\usebeamertemplate{block begin}\em}
+	{\par\usebeamertemplate{block end}\end{actionenv}}
+
+
+      \renewenvironment<>{problem}[1][\undefined]{
+	\begin{actionenv}#2
+		\ifx#1\undefined
+		\def\insertblocktitle{Problema}%
+		\else
+		\def\insertblocktitle{Problema ({\em#1})}%
+		\fi
+		\par
+		\mode<presentation>{%
+            \setbeamercolor{block title}{bg=title, fg=ChetwodeBlue}
+            \setbeamercolor{block body}{bg=ChetwodeBlue!10,fg=black}
+		}%
+		\usebeamertemplate{block begin}\em}
+	{\par\usebeamertemplate{block end}\end{actionenv}}
+
+
+     \renewenvironment<>{example}[1][\undefined]{
+	\begin{actionenv}#2
+		\ifx#1\undefined
+		\def\insertblocktitle{Ejemplo}%
+		\else
+		\def\insertblocktitle{Ejemplo ({\em#1})}%
+		\fi
+		\par
+		\mode<presentation>{%
+			\setbeamercolor{block title}{fg=white,bg=Jaguar!100!green}
+			\setbeamercolor{block body}{fg=black,bg=green!10}
+		}%
+		\usebeamertemplate{block begin}\em}
+	{\par\usebeamertemplate{block end}\end{actionenv}}
+
+
+
+\renewenvironment<>{note}[1][\undefined]{
+	\begin{actionenv}#2
+		\ifx#1\undefined
+		\def\insertblocktitle{Observación}%
+		\else
+		\def\insertblocktitle{Observación ({\em#1})}%
+		\fi
+		\par
+		\mode<presentation>{%
+			\setbeamercolor{block title}{fg=white,bg=Jaguar!80}
+			\setbeamercolor{block body}{fg=black,bg=ChetwodeBlue!10}
+		}%
+		\usebeamertemplate{block begin}\em}
+	{\par\usebeamertemplate{block end}\end{actionenv}}
+
+\renewenvironment<>{exercise}[1][\undefined]{
+	\begin{actionenv}#2
+		\ifx#1\undefined
+		\def\insertblocktitle{Ejercicio}%
+		\else
+		\def\insertblocktitle{Ejercicio ({\em#1})}%
+		\fi
+		\par
+		\mode<presentation>{%
+			\setbeamercolor{block title}{fg=white,bg=Jaguar!80}
+			\setbeamercolor{block body}{fg=black,bg=ChetwodeBlue!10}
+		}%
+		\usebeamertemplate{block begin}\em}
+	{\par\usebeamertemplate{block end}\end{actionenv}}
+
+%----------------------------------------------------------------------------------------
+%   TOC
+%----------------------------------------------------------------------------------------
+
+% https://tex.stackexchange.com/questions/105621/beautiful-presentations-done-with-tex-and-related-systems https://nickhigham.wordpress.com/2013/01/18/top-5-beamer-tips/
+% https://github.com/markolsonse/sthlmBeamerTheme
+%\setcounter{tocdepth}{2}
+%\setbeamerfont{myTOC}{series=\bfseries,size=\Large}
+%\AtBeginSection[]{\frame{%\frametitle{Outline}
+%                  %\usebeamerfont{myTOC}
+%                  \tableofcontents[current]}}
+
+%\setbeamertemplate{subsection in toc}
+%  {\leavevmode\leftskip=2em{\color{TurkishRose}$\bullet$}\hskip1em\inserttocsubsection\par}
+

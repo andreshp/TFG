@@ -1,0 +1,11 @@
+digraph ./Images/dotexample {
+1 [label="A"];
+2 [label="B"];
+3 [label="C"];
+4 [label="D"];
+2 -> 3[label="edge 1"];
+3 -> 4[label="edge 2"];
+1 -> 3[label="edge 3"];
+1 -> 2[label="edge 4"];
+4 -> 1[label="edge 5"];
+}

@@ -1,0 +1,15 @@
+\begin{center}
+  {\color{ChetwodeBlue}\Large\textbf{FrancyMonoids}}
+  \end{center}
+\begin{minted}[bgcolor=backg]{c}
+LoadPackage("numericalsgps");
+LoadPackage("FrancyMonoids");
+s:=NumericalSemigroup(3,4,5);
+gens:=s->Difference(MinimalGenerators(s),
+                    [Multiplicity(s)]);
+DrawTreeOfSonsOfNumericalSemigroup(s,5,gens);
+\end{minted}
+
+\begin{center}
+\includegraphics[width=\textwidth]{./images/tree-semigroups.png}
+\end{center}
